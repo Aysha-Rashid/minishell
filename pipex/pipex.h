@@ -6,11 +6,11 @@
 /*   By: ayal-ras <ayal-ras@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 18:33:14 by ayal-ras          #+#    #+#             */
-/*   Updated: 2024/01/04 20:38:22 by ayal-ras         ###   ########.fr       */
+/*   Updated: 2024/02/08 15:37:06 by ayal-ras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "../libft/libft.h"
 #include <fcntl.h>
 #include <sys/wait.h>
 #include <stdio.h>

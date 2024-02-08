@@ -6,7 +6,7 @@
 /*   By: ayal-ras <ayal-ras@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 12:45:58 by ayal-ras          #+#    #+#             */
-/*   Updated: 2024/02/08 14:28:30 by ayal-ras         ###   ########.fr       */
+/*   Updated: 2024/02/08 17:51:46 by ayal-ras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,16 @@
 #include <sys/wait.h>
 #include <stdlib.h>
 #include <signal.h>
+#include <errno.h>
 #include <readline/readline.h>
 #include "libft/libft.h"
-#include "pipex/pipex.h"
+// #include "pipex/pipex.h"
 
-#define	WRONG_MESSAGE "\033[31mWrong input"
+// #define	WRONG_MESSAGE "\033[31mWrong input"
+#define PIPE 6
+#define INFILE 5
+#define STDIN 0
+#define STDOUT 1
 typedef struct s_data
 {
 	char	**envp;
