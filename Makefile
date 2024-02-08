@@ -1,6 +1,8 @@
 NAME = minishell
 
 SRC = main.c\
+		commands/commands.c\
+		finding_commands.c\
 
 OBJ = $(SRC:.c=.o)
 
@@ -12,13 +14,19 @@ CFLAGS = -Wall -Wextra -Werror
 COLOUR_GREEN=\033[0;32m
 COLOUR_END=\033[0m
 
+LIBFT = libft/libft.a
+LIBFTPATH = libft
+
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+	@make -C $(LIBFTPATH)
+	$(CC) $(CFLAGS) $(LIBFT) $(OBJ) -o $(NAME) -lreadline -lncurses
 	@ echo "$(COLOUR_GREEN)compiled $(words $(OBJ)) files $(COLOUR_END)"
+
 all: $(NAME)
 
 clean:
 	@ rm -rf $(OBJ)
+	@make fclean -C $(LIBFTPATH)
 	@ echo "$(COLOUR_GREEN)Cleaned all 'o' files successfully$(COLOUR_END)"
 
 fclean: clean
