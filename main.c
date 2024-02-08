@@ -6,7 +6,7 @@
 /*   By: ayal-ras <ayal-ras@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 12:16:37 by ayal-ras          #+#    #+#             */
-/*   Updated: 2024/02/08 14:05:33 by ayal-ras         ###   ########.fr       */
+/*   Updated: 2024/02/08 14:12:56 by ayal-ras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(int argc, char **argv, char **env)
 		exit (0);
 	}
 	data.envp = allocate_env(env);
-	find_pwd(&data);
+	// find_pwd(&data);
 	prompt_loop(str);
 }
 

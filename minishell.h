@@ -6,7 +6,7 @@
 /*   By: ayal-ras <ayal-ras@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 12:45:58 by ayal-ras          #+#    #+#             */
-/*   Updated: 2024/02/08 13:57:16 by ayal-ras         ###   ########.fr       */
+/*   Updated: 2024/02/08 14:28:30 by ayal-ras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 #include <signal.h>
 #include <readline/readline.h>
 #include "libft/libft.h"
+#include "pipex/pipex.h"
+
 #define	WRONG_MESSAGE "\033[31mWrong input"
 typedef struct s_data
 {
@@ -34,7 +36,8 @@ typedef struct s_pipex
 	char	*cmd_path2;
 	int		infile;
 	int		outfile;
-
+	int		pid_1;
+	int		pid_2;
 }				t_pipex;
 
 // typedef struct s_sig

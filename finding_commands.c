@@ -1,5 +1,15 @@
 #include "minishell.h"
 
+// int		is_builtin(char *command)
+// {
+// 	if (ft_strncmp(command, "echo", 4) == 0)
+// 		return (1);
+// 	else if (ft_strncmp(command, "cd", 2) == 0)
+// 		return (1);
+// 	else if (ft_strncmp(command, "cat", 3) == 0)
+// 		return (1);
+// 	else 
+// }
 int	find_pwd(t_data *data)
 {
 	int	i;
