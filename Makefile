@@ -1,8 +1,11 @@
 NAME = minishell
 
 SRC = main.c\
-		commands/commands.c\
+		builtins/commands.c\
+		builtins/env.c\
+		builtins/pwd.c\
 		finding_commands.c\
+
 
 OBJ = $(SRC:.c=.o)
 
@@ -14,12 +17,12 @@ CFLAGS = -Wall -Wextra -Werror
 COLOUR_GREEN=\033[0;32m
 COLOUR_END=\033[0m
 
-LIBFT = libft/libft.a
+LIBFT = -L${LIBFTPATH} -lft
 LIBFTPATH = libft
 
 $(NAME): $(OBJ)
-	@make -C $(LIBFTPATH)
-	$(CC) $(CFLAGS) $(LIBFT) $(OBJ) -o $(NAME) -lreadline -lncurses
+	@ cd $(LIBFTPATH) && make all
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(LIBFT)  -lreadline -lncurses
 	@ echo "$(COLOUR_GREEN)compiled $(words $(OBJ)) files $(COLOUR_END)"
 
 all: $(NAME)

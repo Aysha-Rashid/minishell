@@ -6,7 +6,7 @@
 /*   By: ayal-ras <ayal-ras@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 12:45:58 by ayal-ras          #+#    #+#             */
-/*   Updated: 2024/02/08 17:51:46 by ayal-ras         ###   ########.fr       */
+/*   Updated: 2024/02/10 20:57:55 by ayal-ras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,14 @@
 #define INFILE 5
 #define STDIN 0
 #define STDOUT 1
+
 typedef struct s_data
 {
-	char	**envp;
-	char	*pwd;
-	char	*old_pwd;
+	char			**envp;
+	char			*pwd;
+	char			*old_pwd;
+	// int				*builtin;
+	struct s_data	*next;
 }				t_data;
 
 typedef struct s_pipex
@@ -41,18 +44,18 @@ typedef struct s_pipex
 	char	*cmd_path2;
 	int		infile;
 	int		outfile;
-	int		pid_1;
-	int		pid_2;
 }				t_pipex;
 
-// typedef struct s_sig
-// {
-	
-// }				t_sig;
-void	prompt_loop(char *str);
+void	prompt_loop(char *str, t_data *data);
 char	**allocate_env(char **env);
 void	free_array(char **str);
 int		find_pwd(t_data *data);
+int		ft_env(t_data *data);
+int		ft_pwd(t_data *data);
+int		*builtin_arr(char *str);
+void	init_signal(void);
+void	sigint_handler(int sig);
+int		valid_command(char *str, t_data *data);
 // typedef struct s_mini
 // {
 
