@@ -6,7 +6,7 @@
 /*   By: ayal-ras <ayal-ras@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 12:16:37 by ayal-ras          #+#    #+#             */
-/*   Updated: 2024/02/08 14:12:56 by ayal-ras         ###   ########.fr       */
+/*   Updated: 2024/02/10 14:50:51 by ayal-ras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,16 @@
 
 int	main(int argc, char **argv, char **env)
 {
-	// (void)env;
+	(void)env;
 	char *str = NULL;
-	t_data	data;
+	// t_data	data;
 
 	if (argv[1] || argc != 1)
 	{
 		ft_putendl_fd("invalid arguments", 2);
 		exit (0);
 	}
-	data.envp = allocate_env(env);
+	// data.envp = allocate_env(env);
 	// find_pwd(&data);
 	prompt_loop(str);
 }

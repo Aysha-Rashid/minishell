@@ -19,7 +19,7 @@ LIBFTPATH = libft
 
 $(NAME): $(OBJ)
 	@make -C $(LIBFTPATH)
-	$(CC) $(CFLAGS) $(LIBFT) $(OBJ) -o $(NAME) -lreadline -lncurses
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(LIBFT) -lreadline -lncurses
 	@ echo "$(COLOUR_GREEN)compiled $(words $(OBJ)) files $(COLOUR_END)"
 
 all: $(NAME)
