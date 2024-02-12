@@ -6,7 +6,7 @@
 /*   By: ayal-ras <ayal-ras@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 12:45:58 by ayal-ras          #+#    #+#             */
-/*   Updated: 2024/02/10 20:57:55 by ayal-ras         ###   ########.fr       */
+/*   Updated: 2024/02/11 20:33:26 by ayal-ras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <stdlib.h>
 #include <signal.h>
 #include <errno.h>
+#include <string.h>
 #include <readline/readline.h>
 #include "libft/libft.h"
 // #include "pipex/pipex.h"
@@ -26,12 +27,17 @@
 #define INFILE 5
 #define STDIN 0
 #define STDOUT 1
+typedef struct s_commands
+{
+	char	**cmd;
+}				t_commands;
 
 typedef struct s_data
 {
 	char			**envp;
 	char			*pwd;
 	char			*old_pwd;
+	t_commands		*commands;
 	// int				*builtin;
 	struct s_data	*next;
 }				t_data;
@@ -46,16 +52,19 @@ typedef struct s_pipex
 	int		outfile;
 }				t_pipex;
 
-void	prompt_loop(char *str, t_data *data);
+void	prompt_loop(char **str, t_data *data);
 char	**allocate_env(char **env);
 void	free_array(char **str);
 int		find_pwd(t_data *data);
 int		ft_env(t_data *data);
 int		ft_pwd(t_data *data);
+int		count_arg(char **str);
+// void	count_arg(int i, char **str, int out);
+int		ft_echo(char **argv);
 int		*builtin_arr(char *str);
 void	init_signal(void);
 void	sigint_handler(int sig);
-int		valid_command(char *str, t_data *data);
+int		valid_command(char **str, t_data *data);
 // typedef struct s_mini
 // {
 

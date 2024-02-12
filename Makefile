@@ -4,6 +4,8 @@ SRC = main.c\
 		builtins/commands.c\
 		builtins/env.c\
 		builtins/pwd.c\
+		builtins/echo.c\
+		builtins/export.c\
 		finding_commands.c\
 
 
@@ -20,9 +22,12 @@ COLOUR_END=\033[0m
 LIBFT = -L${LIBFTPATH} -lft
 LIBFTPATH = libft
 
+# FT_PRINTF = -L${FT_PRINTFPATH} -lft
+# FT_PRINTFPATH = ft_printf
+
 $(NAME): $(OBJ)
 	@ cd $(LIBFTPATH) && make all
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(LIBFT)  -lreadline -lncurses
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(LIBFT) -lreadline -lncurses
 	@ echo "$(COLOUR_GREEN)compiled $(words $(OBJ)) files $(COLOUR_END)"
 
 all: $(NAME)

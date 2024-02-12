@@ -6,7 +6,7 @@
 /*   By: ayal-ras <ayal-ras@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 12:16:37 by ayal-ras          #+#    #+#             */
-/*   Updated: 2024/02/10 21:04:54 by ayal-ras         ###   ########.fr       */
+/*   Updated: 2024/02/11 20:53:19 by ayal-ras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,29 +26,30 @@ int	main(int argc, char **argv, char **env)
 	}
 	// write(1, "---------------here----------------", 36);
 	data.envp = allocate_env(env);
+	// data.commands->cmd = argv;
 	find_pwd(&data);
-	prompt_loop(*argv, &data);
+	prompt_loop(argv, &data);
 }
 
-void	prompt_loop(char *str, t_data *data)
+void	prompt_loop(char **str, t_data *data)
 {
 	// (void)data;
 	while (1)
 	{
-		str = readline("\033[96mminishell$ \033[0m");
-		if (*str && ft_strncmp(str, "exit", 5) == 0)
+		*str = readline("\033[96mminishell$ \033[0m");
+		if (*str && ft_strncmp(*str, "exit", 5) == 0)
 		{
 			ft_putendl_fd("\033[0;32msee you around 😮‍💨!\033[0m", 1);
 			ft_putendl_fd("exit", 1);
-			free(str);
+			free(*str);
 			exit(0);
 		}
 		if (valid_command(str, data) == 1)
 			ft_putendl_fd("\033[31mERROR HANDLING", 2);
 		// error handling here (when the command isnt valid or something goes wrong 
 		// when any of the control signal is pressed)
-		add_history(str);
-		free(str);
+		add_history(*str);
+		// free_array(str);
 		init_signal();
 	}
 }
@@ -63,13 +64,17 @@ void	free_array(char **str)
 	free(str);
 }
 
-int	valid_command(char *str, t_data *data)
+int	valid_command(char **str, t_data *data)
 {
 	// data->builtin = builtin_arr(&str[0]);
-	if (*str && (ft_strncmp(str, "env", 3) == 0 || ft_strncmp(str, "ENV", 3) == 0))
+	if (*str && (ft_strncmp(*str, "env", 3) == 0 || ft_strncmp(*str, "ENV", 3) == 0))
 		return (ft_env(data));
-	else if (*str && (ft_strncmp(str, "pwd", 3) == 0|| ft_strncmp(str, "PWD", 3) == 0))
+	else if (*str && (ft_strncmp(*str, "pwd", 3) == 0|| ft_strncmp(*str, "PWD", 3) == 0))
 		return (ft_pwd(data));
+	// else if (*str && (ft_strncmp(*str, "export", 5) == 0|| ft_strncmp(*str, "EXPORT", 5) == 0))
+	// 	return (ft_pwd(data));
+	else if (*str && (ft_strncmp(*str, "echo", 4) == 0|| ft_strncmp(*str, "echo -n", 8) == 0))
+		return (ft_echo(str));
 	// else if (*str && (ft_strcmp(str, )))
 	// all the builtins and commands that needs to handled (execution work)
 	else if (!*str)
