@@ -6,7 +6,7 @@
 /*   By: ayal-ras <ayal-ras@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 20:31:16 by ayal-ras          #+#    #+#             */
-/*   Updated: 2024/02/10 20:32:50 by ayal-ras         ###   ########.fr       */
+/*   Updated: 2024/02/12 16:55:34 by ayal-ras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int ft_pwd(t_data *data)
 {
+    if (!data->pwd)
+        return (1);
     ft_putendl_fd(data->pwd, 1);
     return (0);
 }

@@ -1,12 +1,12 @@
 NAME = minishell
 
 SRC = main.c\
-		builtins/commands.c\
 		builtins/env.c\
 		builtins/pwd.c\
 		builtins/echo.c\
 		builtins/export.c\
 		finding_commands.c\
+		# builtins/commands.c\
 
 
 OBJ = $(SRC:.c=.o)
