@@ -6,7 +6,7 @@
 /*   By: ayal-ras <ayal-ras@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 18:01:34 by ayal-ras          #+#    #+#             */
-/*   Updated: 2024/02/15 17:00:12 by ayal-ras         ###   ########.fr       */
+/*   Updated: 2024/02/16 21:06:56 by ayal-ras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,18 +48,24 @@
 // 	// free_array(temp);
 // }
 
-int	ft_export(char **str, t_data *data)
+int	ft_export(char *str, t_data *data)
 {
 	t_env	*env_duplicate;
+	char	**token;
 
 	env_duplicate = duplicate_env(data->envp);
-	if (str[1] == NULL)
+	// ft_putstr_fd(&str[6], 1);
+	token = ft_split(str, ' ');
+	if (token[1] == NULL)
 	{
 		declare_sorted(env_duplicate);
 		return (0);
 	}
 	else
-		printf("briijjjj");
+	{
+		ft_putendl_fd("\033[31mnot working or more arguments", 2);
+		return (0);
+	}
 	// Handle exporting specific environment variables (not implemented yet)
 	return (1);
 }

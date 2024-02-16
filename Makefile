@@ -5,8 +5,6 @@ SRC = main.c\
 		builtins/pwd.c\
 		builtins/echo.c\
 		builtins/export.c\
-		finding_commands.c\
-		# builtins/commands.c\
 
 
 OBJ = $(SRC:.c=.o)

@@ -6,7 +6,7 @@
 /*   By: ayal-ras <ayal-ras@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 15:27:38 by ayal-ras          #+#    #+#             */
-/*   Updated: 2024/02/15 17:17:53 by ayal-ras         ###   ########.fr       */
+/*   Updated: 2024/02/16 21:06:17 by ayal-ras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int	ft_env(t_data *data)
 		return (EXIT_FAILURE);
 }
 
-t_env	*duplicate_env(t_env *env) // might need it later for export
+t_env	*duplicate_env(t_env *env)
 {
 	t_env	*head = NULL;
 	t_env	*temp = NULL;

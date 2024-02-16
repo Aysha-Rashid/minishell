@@ -48,8 +48,8 @@
 
 // --------implementing the commands---
 // -redirections : <, >, << and >>
+// -interective mode : ctrl-C, ctrl-D, ctrl-\ // signal
 // -pipes 
-// -interective mode : ctrl-C, ctrl-D, ctrl-\
 // -built-in: 
 // 1.echo -n
 // 2.cd
