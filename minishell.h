@@ -6,7 +6,7 @@
 /*   By: ayal-ras <ayal-ras@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 12:45:58 by ayal-ras          #+#    #+#             */
-/*   Updated: 2024/02/16 20:30:55 by ayal-ras         ###   ########.fr       */
+/*   Updated: 2024/02/17 20:34:40 by ayal-ras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <errno.h>
 #include <string.h>
 #include <readline/readline.h>
+#include <readline/history.h>
 #include "libft/libft.h"
 // #include "pipex/pipex.h"
 
@@ -72,8 +73,13 @@ int		ft_pwd(t_data *data);
 int		ft_export(char *str, t_data *data);
 void	declare_sorted(t_env *head);
 int		ft_echo(char *argv);
+int		ft_cd(char *str, t_data *data);
 char	**find_paths_and_split(char **envp);
+int		find_current_path(t_data *data, char *str);
+void	add_pwd_to_env(t_data *data, char *str);
+int		ft_unset(char *str, t_data *data);
 
+void	change_pwd(t_data *tools);
 t_env	*duplicate_node(char *str);
 t_env	*duplicate_env(t_env *env);
 void	free_env_list(t_env *head);

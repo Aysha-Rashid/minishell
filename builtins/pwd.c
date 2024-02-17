@@ -6,7 +6,7 @@
 /*   By: ayal-ras <ayal-ras@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 20:31:16 by ayal-ras          #+#    #+#             */
-/*   Updated: 2024/02/16 20:09:09 by ayal-ras         ###   ########.fr       */
+/*   Updated: 2024/02/17 14:53:48 by ayal-ras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,21 @@ int	find_pwd(t_data *data)
 	return (0);
 }
 
-int ft_pwd(t_data *data)
+int	ft_pwd(t_data *data)
 {
-    if (!data->pwd)
-        return (1);
-    ft_putendl_fd(data->pwd, 1);
-    // write(1, "1", 1);
-    return (0);
+	if (!data->pwd)
+		return (1);
+	ft_putendl_fd(data->pwd, 1);
+	return (0);
+}
+
+void	change_pwd(t_data *tools)
+{
+	char	*tmp;
+
+	tmp = ft_strdup(tools->pwd);
+	free(tools->old_pwd);
+	tools->old_pwd = tmp;
+	free(tools->pwd);
+	tools->pwd = getcwd(NULL, sizeof(NULL));
 }

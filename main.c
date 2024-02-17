@@ -6,7 +6,7 @@
 /*   By: ayal-ras <ayal-ras@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 12:16:37 by ayal-ras          #+#    #+#             */
-/*   Updated: 2024/02/16 21:05:52 by ayal-ras         ###   ########.fr       */
+/*   Updated: 2024/02/17 21:33:54 by ayal-ras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,6 @@ void	prompt_loop(char *str, t_data *data)
         str = readline("\033[96mminishell$ \033[0m");
         if (str == NULL)
             continue;
-        // if (data->cmd)
-        //     free(data->cmd);
         data->cmd = ft_strdup(str);
         trimmed_cmd = ft_strtrim(str, " ");
 		free(str);
@@ -56,7 +54,6 @@ void	prompt_loop(char *str, t_data *data)
 		// token_reader(data);
 		free(trimmed_cmd);
 	}
-	// free_array(str);
 }
 
 // int	token_reader(t_data *tools)
@@ -92,21 +89,24 @@ void	free_array(char **str)
 
 int	valid_command(char *str, t_data *data)
 {
-	if (str && (!ft_strncmp(str, "env", 3)
-			|| !ft_strncmp(str, "ENV", 3)))
+	if (str && (!ft_strncmp(str, "env", 4)
+			|| !ft_strncmp(str, "ENV", 4)))
 		return (ft_env(data));
 	else if (!ft_strncmp(str, "export", 5))
 		return (ft_export(str, data));
-	else if (str && (!ft_strncmp(str, "pwd", 3)
-			|| !ft_strncmp(str, "PWD", 3)))
+	else if (str && (!ft_strncmp(str, "pwd", 4)
+			|| !ft_strncmp(str, "PWD", 4)))
 		return (ft_pwd(data));
 	else if (str && (!ft_strncmp(str, "echo", 4)
+			|| (!ft_strncmp(str, "ECHO", 4))
 			|| !ft_strncmp(str, "echo -n", 7)))
-		return (ft_echo(str)); // not working with double or single qoute
-	// else if (str && (ft_strcmp(str, )))
-	// all the builtins and commands that needs to handled (execution work)
-	else if (!str)
-		prompt_loop(str, data);
+		return (ft_echo(str)); // hangle single qoutes or double qoute
+	else if (str && (!ft_strncmp(str, "cd", 2)))
+		return (ft_cd(str, data)); // hangle single qoutes or double qoute
+	// else if (str && (!ft_strncmp(str, "unset", 5)))
+	// 	return (ft_unset(str, data));
+	else if (!*str)
+		return (0);
 	return (1);
 }
 
@@ -117,7 +117,6 @@ int	parse_env(t_data *data, char **env)
 
 	data->commands->path = find_paths_and_split(env);
 	data->envp = allocate_env(env);
-	// printf("how many times? \n");
 	i = 0;
 	while (data->commands->path[i])
 	{
@@ -150,7 +149,6 @@ char	**find_paths_and_split(char **envp)
 			envp_path = ft_substr(envp[i], 5, ft_strlen(envp[i]) - 5);
 			break ;
 		}
-		// printf("how many times?");
 		i++;
 	}
 	paths = ft_split(envp_path, ':');
